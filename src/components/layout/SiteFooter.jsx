@@ -1,4 +1,4 @@
-import { Link } from "@tanstack/react-router";
+import { Link, useLocation } from "@tanstack/react-router";
 import { LOGO } from "@/data/mock";
 import { Instagram, Linkedin, Twitter, Youtube } from "lucide-react";
 
@@ -30,8 +30,15 @@ const columns = [
 ];
 
 export default function SiteFooter() {
+  const isHomePage = useLocation({ select: (location) => location.pathname === "/" });
+
   return (
-    <footer className="relative border-t border-border bg-[#080410]">
+    <footer
+      onClickCapture={isHomePage ? (event) => {
+        if (event.target.closest("a")) event.preventDefault();
+      } : undefined}
+      className="relative border-t border-border bg-[#080410]"
+    >
       <div className="mx-auto max-w-[1280px] px-5 py-16 lg:px-8">
         <div className="grid gap-12 lg:grid-cols-[1.4fr_repeat(3,1fr)]">
           <div>

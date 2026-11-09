@@ -4,7 +4,7 @@ import { getRequest, setResponseStatus } from "@tanstack/react-start/server";
 
 // Both middlewares hand handlers the same lazy `context.getBase44()`: a
 // function, not the client, because the client needs the platform headers and
-// a handler that never touches Base44 must still answer without them. The
+// a handler that never touches the SDK client must still answer without them. The
 // platform sets those headers on every request that reaches the server; a
 // visitor's Authorization header makes the client act as that visitor.
 const withGetBase44 = (next, request = getRequest()) => {
@@ -12,7 +12,7 @@ const withGetBase44 = (next, request = getRequest()) => {
   return next({ context: { getBase44: () => (client ??= createClientFromRequest(request)) } });
 };
 
-// Applied to every server function by src/start.js: sends the visitor's Base44
+// Applied to every server function by src/start.js: sends the visitor's platform
 // access token with the call so `context.getBase44()` acts as the visitor (entity
 // access rules apply). Anonymous visitors send nothing and get an anonymous client.
 export const authMiddleware = createMiddleware({ type: "function" })

@@ -108,7 +108,7 @@ export async function loadSignInOptions() {
 // factor management. Returns to this app's /mfa page when MFA is needed.
 export async function signInWithProvider(provider, returnTo, { manage = false } = {}) {
   const info = await loadSignInOptions();
-  // Enterprise SSO sign-in is exempt from Base44 MFA; only managing factors asks for it.
+  // Enterprise SSO sign-in is exempt from provider MFA; only managing factors asks for it.
   if (!manage && (info.auth_config?.mfa_policy !== 'required' || provider === 'sso')) {
     return base44.auth.loginWithProvider(provider, returnTo);
   }

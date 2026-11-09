@@ -1,6 +1,6 @@
 import { openaiCompatibleText } from "@tanstack/ai-openai/compatible";
 
-// A TanStack AI chat adapter on the Base44 AI gateway: OpenAI-compatible, no API
+// A TanStack AI chat adapter on the configured gateway: OpenAI-compatible, no API
 // key, billed to the app's AI credits. Pass `context.getBase44()`. The gateway is
 // called as the app (service role) because an owner can restrict it to server-side
 // calls, which refuses a visitor's token, so authenticate the caller first.

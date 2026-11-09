@@ -6,10 +6,15 @@ import ThemeToggle from "@/components/shared/ThemeToggle";
 import { ResourcesMenu, ResourcesMobile } from "@/components/layout/ResourcesMenu";
 import { cn } from "@/lib/utils";
 
+function preventLinkNavigation(event) {
+  if (event.target.closest("a")) event.preventDefault();
+}
+
 export default function SiteHeader() {
   const [open, setOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const { pathname } = useLocation();
+  const isHomePage = pathname === "/";
 
   useEffect(() => setOpen(false), [pathname]);
   useEffect(() => {
@@ -25,18 +30,15 @@ export default function SiteHeader() {
 
   return (
     <header
+      onClickCapture={isHomePage ? preventLinkNavigation : undefined}
       className={cn(
         "fixed inset-x-0 top-0 z-50 transition-all duration-300",
         scrolled ? "border-b border-border/70 bg-[#0a0512]/85 backdrop-blur-xl" : "bg-transparent"
       )}
     >
       <div className="mx-auto flex h-[72px] max-w-[1280px] items-center justify-between gap-6 px-5 lg:px-8">
-        <Link to="/" className="flex shrink-0 items-center gap-2.5">
-          <img src={LOGO} alt="RampUp Fundraising" className="h-9 w-9 rounded-lg object-cover ring-1 ring-white/10" />
-          <span className="hidden flex-col leading-none sm:flex">
-            <span className="font-heading text-[15px] font-extrabold italic tracking-tight text-metal">RAMPUP</span>
-            <span className="text-[8.5px] font-semibold uppercase tracking-[0.34em] text-primary/90">Fundraising</span>
-          </span>
+        <Link to="/" aria-label="Home" className="flex shrink-0 items-center">
+          <img src={LOGO} alt="" className="h-12 w-12 object-cover" />
         </Link>
 
         <nav className="hidden items-center gap-0.5 lg:flex">

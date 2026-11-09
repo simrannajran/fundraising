@@ -28,7 +28,12 @@ export const Route = createFileRoute("/_site/")({
 
 function HomePage() {
   return (
-    <>
+    <div
+      className="contents"
+      onClickCapture={(event) => {
+        if (event.target.closest("a")) event.preventDefault();
+      }}
+    >
       <Hero />
       <ImpactStats />
       <AudiencePaths />
@@ -51,6 +56,6 @@ function HomePage() {
       <SuccessStoriesStrip />
       <Testimonials />
       <FinalCTA />
-    </>
+    </div>
   );
 }
