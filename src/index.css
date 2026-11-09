@@ -1,0 +1,316 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 258 38% 4%;
+    --foreground: 220 16% 94%;
+    --card: 260 26% 7%;
+    --card-foreground: 220 16% 94%;
+    --popover: 260 28% 8%;
+    --popover-foreground: 220 16% 95%;
+    --primary: 271 86% 58%;
+    --primary-foreground: 0 0% 100%;
+    --secondary: 264 22% 13%;
+    --secondary-foreground: 220 14% 90%;
+    --muted: 263 18% 12%;
+    --muted-foreground: 250 11% 66%;
+    --accent: 276 96% 72%;
+    --accent-foreground: 260 40% 6%;
+    --destructive: 0 72% 54%;
+    --destructive-foreground: 0 0% 100%;
+    --border: 265 20% 17%;
+    --input: 265 20% 18%;
+    --ring: 271 86% 62%;
+    --chart-1: 271 86% 62%;
+    --chart-2: 285 70% 74%;
+    --chart-3: 212 80% 66%;
+    --chart-4: 158 62% 52%;
+    --chart-5: 38 92% 64%;
+    --radius: 0.875rem;
+    --font-heading: "Sora", ui-sans-serif, system-ui, sans-serif;
+    --font-body: "Inter", ui-sans-serif, system-ui, sans-serif;
+    --font-display: "Sora", ui-sans-serif, system-ui, sans-serif;
+    --font-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, monospace;
+    --sidebar-background: 260 28% 6%;
+    --sidebar-foreground: 220 14% 88%;
+    --sidebar-primary: 271 86% 58%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 264 22% 12%;
+    --sidebar-accent-foreground: 220 14% 95%;
+    --sidebar-border: 265 20% 15%;
+    --sidebar-ring: 271 86% 62%;
+
+    /* Surfaces used by the shared utility classes */
+    --surface-from: 260 26% 8%;
+    --surface-to: 260 30% 5.5%;
+    --surface-2-from: 262 24% 10%;
+    --surface-2-to: 260 26% 7%;
+    --band: 258 55% 3.8%;
+    --chrome: 256 55% 5%;
+    --hairline: 265 20% 17%;
+    --grid-line: 265 20% 20%;
+    --scrollbar-thumb: 265 20% 24%;
+    color-scheme: dark;
+  }
+
+  .dark {
+    --background: 258 38% 4%;
+    --foreground: 220 16% 94%;
+  }
+
+  /* Light mode — applied by the theme toggle on <html> */
+  .light {
+    --background: 255 45% 99%;
+    --foreground: 258 32% 12%;
+    --card: 0 0% 100%;
+    --card-foreground: 258 32% 12%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 258 30% 14%;
+    --primary: 271 86% 52%;
+    --primary-foreground: 0 0% 100%;
+    --secondary: 260 40% 96%;
+    --secondary-foreground: 258 28% 18%;
+    --muted: 260 38% 96%;
+    --muted-foreground: 258 12% 43%;
+    --accent: 270 74% 46%;
+    --accent-foreground: 0 0% 100%;
+    --destructive: 0 72% 48%;
+    --destructive-foreground: 0 0% 100%;
+    --border: 262 28% 90%;
+    --input: 262 28% 88%;
+    --ring: 271 86% 55%;
+    --sidebar-background: 0 0% 100%;
+    --sidebar-foreground: 258 25% 20%;
+    --sidebar-primary: 271 86% 52%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 260 40% 96%;
+    --sidebar-accent-foreground: 258 28% 16%;
+    --sidebar-border: 262 28% 90%;
+    --sidebar-ring: 271 86% 55%;
+
+    --surface-from: 0 0% 100%;
+    --surface-to: 258 45% 98%;
+    --surface-2-from: 258 50% 99%;
+    --surface-2-to: 260 42% 97%;
+    --band: 258 48% 97.5%;
+    --chrome: 255 45% 99%;
+    --hairline: 262 28% 90%;
+    --grid-line: 262 30% 86%;
+    --scrollbar-thumb: 262 22% 80%;
+    color-scheme: light;
+  }
+
+  * {
+    @apply border-border;
+  }
+
+  html {
+    scroll-behavior: smooth;
+    -webkit-text-size-adjust: 100%;
+  }
+
+  body {
+    @apply bg-background text-foreground font-body antialiased;
+    overflow-x: hidden;
+  }
+
+  h1, h2, h3, h4 {
+    @apply font-heading;
+    letter-spacing: -0.022em;
+  }
+
+  ::selection {
+    background: hsl(271 86% 58% / 0.35);
+    color: #fff;
+  }
+}
+
+@layer utilities {
+  .text-metal {
+    background: linear-gradient(178deg, #ffffff 6%, #e6e3f2 42%, #a9a3c2 78%, #7d7794 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+
+  .text-silver {
+    color: hsl(220 14% 84%);
+  }
+
+  .surface {
+    background: linear-gradient(180deg, hsl(var(--surface-from)) 0%, hsl(var(--surface-to)) 100%);
+  }
+
+  .surface-2 {
+    background: linear-gradient(180deg, hsl(var(--surface-2-from)) 0%, hsl(var(--surface-2-to)) 100%);
+  }
+
+  .hairline {
+    border: 1px solid hsl(var(--hairline));
+  }
+
+  .glow {
+    box-shadow: 0 18px 60px -24px hsl(271 86% 58% / 0.6);
+  }
+
+  .glow-soft {
+    box-shadow: 0 40px 120px -60px hsl(271 86% 58% / 0.9);
+  }
+
+  .neon-ring {
+    box-shadow: inset 0 0 0 1px hsl(271 86% 62% / 0.35), 0 0 32px -10px hsl(271 86% 62% / 0.6);
+  }
+
+  .grid-fade {
+    background-image:
+      linear-gradient(hsl(var(--grid-line) / 0.55) 1px, transparent 1px),
+      linear-gradient(90deg, hsl(var(--grid-line) / 0.55) 1px, transparent 1px);
+    background-size: 72px 72px;
+    -webkit-mask-image: radial-gradient(ellipse 80% 60% at 50% 0%, #000 25%, transparent 75%);
+    mask-image: radial-gradient(ellipse 80% 60% at 50% 0%, #000 25%, transparent 75%);
+  }
+
+  .rule-fade {
+    height: 1px;
+    background: linear-gradient(90deg, transparent, hsl(var(--grid-line)), transparent);
+  }
+
+  .animate-rise {
+    animation: rise 0.7s cubic-bezier(0.22, 1, 0.36, 1) both;
+  }
+
+  .animate-fade {
+    animation: fade 0.6s ease-out both;
+  }
+
+  .delay-1 { animation-delay: 0.08s; }
+  .delay-2 { animation-delay: 0.16s; }
+  .delay-3 { animation-delay: 0.24s; }
+  .delay-4 { animation-delay: 0.32s; }
+
+  .scrollbar-thin::-webkit-scrollbar { width: 6px; height: 6px; }
+  .scrollbar-thin::-webkit-scrollbar-thumb { background: hsl(var(--scrollbar-thumb)); border-radius: 99px; }
+  .scrollbar-thin::-webkit-scrollbar-track { background: transparent; }
+}
+
+@keyframes rise {
+  from { opacity: 0; transform: translateY(18px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes fade {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes marquee {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
+
+/* ------------------------------------------------------------------
+   Light-mode bridge.
+   The app was designed dark-first, so a handful of literal colour
+   utilities are re-pointed at the light token palette here instead of
+   being rewritten across every page.
+   ------------------------------------------------------------------ */
+.light .text-silver { color: hsl(258 16% 32%); }
+
+.light .text-metal {
+  background: linear-gradient(178deg, #16122a 4%, #2a2344 46%, #4a4266 80%, #625a7d 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.light .glow { box-shadow: 0 18px 50px -28px hsl(271 86% 58% / 0.4); }
+.light .glow-soft { box-shadow: 0 30px 80px -55px hsl(271 86% 58% / 0.5); }
+
+.light .surface,
+.light .surface-2 {
+  box-shadow: 0 1px 2px hsl(258 30% 25% / 0.05), 0 14px 34px -26px hsl(258 30% 25% / 0.22);
+}
+
+/* Ink text that was white on dark surfaces */
+.light .text-white { color: hsl(var(--foreground)); }
+.light .text-white\/70 { color: hsl(var(--foreground) / 0.72); }
+.light .text-white\/50 { color: hsl(var(--foreground) / 0.52); }
+.light .text-white\/35 { color: hsl(var(--foreground) / 0.45); }
+.light .text-white\/30 { color: hsl(var(--foreground) / 0.32); }
+
+.light .hover\:text-white:hover,
+.light .group:hover .group-hover\:text-white { color: hsl(var(--foreground)); }
+.light .hover\:text-silver:hover { color: hsl(258 16% 26%); }
+
+/* Keep white text where it sits on a brand or image chip */
+.light .bg-primary.text-white,
+.light .bg-primary\/90.text-white,
+.light .bg-primary\/80.text-white,
+.light .bg-black\/55,
+.light .bg-black\/60,
+.light .bg-black\/70.text-white,
+.light [class*="bg-emerald-400"].text-white { color: #fff; }
+.light .text-emerald-300 { color: #047857; }
+
+/* Faint white washes become faint ink washes */
+.light .bg-white\/\[0\.02\],
+.light .bg-white\/\[0\.025\],
+.light .bg-white\/\[0\.03\] { background-color: hsl(var(--foreground) / 0.035); }
+
+.light .bg-white\/\[0\.04\],
+.light .bg-white\/\[0\.05\],
+.light .bg-white\/\[0\.06\] { background-color: hsl(var(--foreground) / 0.055); }
+
+.light .bg-white\/\[0\.07\],
+.light .bg-white\/\[0\.12\] { background-color: hsl(var(--foreground) / 0.09); }
+
+.light .hover\:bg-white\/\[0\.04\]:hover,
+.light .hover\:bg-white\/\[0\.07\]:hover { background-color: hsl(var(--foreground) / 0.06); }
+.light .hover\:bg-white\/\[0\.12\]:hover { background-color: hsl(var(--foreground) / 0.1); }
+
+.light .border-white\/10,
+.light .border-white\/15,
+.light .border-white\/30 { border-color: hsl(var(--border)); }
+
+.light .ring-white\/10 { --tw-ring-color: hsl(var(--border)); }
+
+/* Opaque dark page bands and chrome */
+.light .bg-\[\#080410\],
+.light .bg-\[\#0b0616\],
+.light .bg-\[\#0d0819\] { background-color: hsl(var(--band)); }
+
+.light .bg-\[\#0a0512\] { background-color: hsl(var(--band)); }
+.light .bg-\[\#0a0512\]\/85,
+.light .bg-\[\#0a0512\]\/90 { background-color: hsl(var(--background) / 0.88); }
+
+/* Image overlays fade into the light page instead of the dark one */
+.light .from-\[\#0b0616\],
+.light .from-\[\#0a0512\] {
+  background-image: linear-gradient(to top, hsl(var(--background)) 0%, hsl(var(--background) / 0) 85%);
+}
+
+.light .from-\[\#0a0512\]\/70 {
+  background-image: linear-gradient(to bottom, hsl(var(--background) / 0.72), hsl(var(--background) / 0.94) 70%, hsl(var(--background)));
+}
+
+.light .from-\[\#0a0512\]\/80 {
+  background-image: linear-gradient(to bottom, hsl(var(--background) / 0.6), hsl(var(--background) / 0.94), hsl(var(--background)));
+}
+
+.light .via-\[\#0a0512\]\/90,
+.light .via-\[\#0a0512\]\/92,
+.light .via-\[\#0a0512\]\/95 {
+  background-image: linear-gradient(to bottom, hsl(var(--background) / 0.7), hsl(var(--background) / 0.95), hsl(var(--background)));
+}
+
+.light .via-\[\#0a0512\]\/20,
+.light .via-\[\#0b0616\]\/20,
+.light .via-\[\#0b0616\]\/30 {
+  background-image: linear-gradient(to top, hsl(var(--background) / 0.7), transparent);
+}
+
+.light .from-\[\#cfc9e4\] {
+  background-image: linear-gradient(to right, #b7b0cc, #6f6688);
+}
