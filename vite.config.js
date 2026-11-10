@@ -1,7 +1,8 @@
 
 import { readFileSync } from "node:fs";
 import base44 from "@base44/vite-plugin";
-import { cloudflare } from "@cloudflare/vite-plugin";
+// import { cloudflare } from "@cloudflare/vite-plugin";
+import { nitro } from "nitro/vite";
 import { tanstackStart } from "@tanstack/react-start/plugin/vite";
 import react from "@vitejs/plugin-react";
 import { defineConfig } from "vite";
@@ -60,9 +61,10 @@ export default defineConfig({
 
     react(),
 
-    cloudflare({
-      viteEnvironment: { name: "ssr" },
-      inspectorPort: false,
-    }),
+    // cloudflare({
+    //   viteEnvironment: { name: "ssr" },
+    //   inspectorPort: false,
+    // }),
+    nitro(),
   ],
 });
